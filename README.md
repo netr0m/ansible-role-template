@@ -31,6 +31,26 @@ None
     - { role: netr0m.ansible-role-template }
 ```
 
+## Development
+This project uses [pre-commit](https://pre-commit.com/).
+
+Currently, there are three hooks:
+- [ansible-lint](https://pypi.org/project/ansible-lint/)
+- [yamllint](https://pypi.org/project/yamllint/)
+- [encryption-check](./scripts/encryption-check.sh)
+
+To run `pre-commit` manually, run `pre-commit run -a`
+
+### Requirements
+To run pre-commit, you need three things:
+1. A virtual environment in the parent directory of this repository
+  - `$ python3 -m venv ../.venv`
+  - `$ source ../.venv/bin/activate`
+2. The Python dependencies (see [requirements.txt](./requirements.txt))
+  - `$ pip install -r requirements.txt`
+3. Pre-commit hooks installed
+  - `$ pre-commit install`
+
 ## License
 
 [MIT](./LICENSE)
