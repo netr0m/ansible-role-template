@@ -4,12 +4,22 @@
   become: true
 
   pre_tasks:
-    - name: Update apt cache
-      apt: update_cache=yes cache_valid_time=600
-      when: ansible_os_family == 'Debian'
+    - name: Update package repository cache
+      block:
+        - name: Update apt cache
+          ansible.builtin.apt:
+            update_cache: true
+            cache_valid_time: 600
+          when: ansible_os_family == 'Debian'
+        - name: Update pacman cache
+          community.general.pacman:
+            update_cache: true
+            cache_valid_time: 600
+          when: ansible_os_family == 'Archlinux'
 
-    - name: Wait for systemd to complete initialization.  # noqa 303
-      command: systemctl is-system-running
+    - name: Wait for systemd to complete initialization   # noqa command-instead-of-module
+      ansible.builtin.command:
+        cmd: systemctl is-system-running
       register: systemctl_status
       until: >
         'running' in systemctl_status.stdout or
@@ -21,4 +31,4 @@
       failed_when: systemctl_status.rc > 1
 
   roles:
-    - role: netr0m.ansible-role-template
+    - ../ansible-role-common
