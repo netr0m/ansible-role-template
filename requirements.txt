@@ -4,3 +4,4 @@ molecule==4.0.1
 molecule-docker==2.0.0
 PyYAML==6.0
 typer==0.6.1
+pre-commit==2.20.0
