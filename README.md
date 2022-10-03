@@ -52,7 +52,7 @@ To run pre-commit, you need three things:
   - `$ pre-commit install`
 
 ### Updating the 'variables' docs
-This template provides a script for generating markdown files representing ansible variable definitions.
+This project provides a script for generating markdown files representing ansible (YAML) variable definitions.
 
 An example can be seen in [`docs/default-variables.md`](./docs/default-variables.md), which is generated from the variables defined in [`defaults/main.yml`](./defaults/main.yml).
 
