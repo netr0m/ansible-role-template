@@ -31,4 +31,4 @@
       failed_when: systemctl_status.rc > 1
 
   roles:
-    - ../ansible-role-common
+    - netr0m.template
