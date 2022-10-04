@@ -31,15 +31,17 @@ jobs:
         with:
           path: ${{ inputs.dirname }}
 
-      - name: 'Set up Python 3'
-        uses: 'actions/setup-python@v2'
+      - name: 'Set up Python 3.10'
+        uses: 'actions/setup-python@v4'
         with:
-          python-version: '3.x'
+          python-version: '3.10'
 
       - name: 'Install dependencies'
         run: pip3 install ${{ matrix.linter }}
 
       - name: 'Lint code'
-        run: ${{ matrix.linter }} .
+        run: |
+          cd ${{ inputs.dirname }}
+          ${{ matrix.linter }} -c .${{ matrix.linter }} .
 
 ...
