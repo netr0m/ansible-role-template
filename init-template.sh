@@ -11,6 +11,8 @@ TEMPLATE_ROLE_NAME="template"
 TEMPLATE_FILES_WITH_REFS=(
     "meta/main.yml" "molecule/default/converge.yml"
     "LICENSE" "README.md" "example_playbook.yml"
+    ".github/workflows/ci.yml" ".github/workflows/lint.yml"
+    ".github/workflows/molecule.yml"
 )
 
 ROLE_AUTHOR=""
@@ -93,6 +95,8 @@ replace_refs() {
         sed -i "s/$TEMPLATE_REPO_NAME/$REPO_NAME/g" "$SCRIPT_DIR/$filepath"
         sed -i "s/$TEMPLATE_ROLE_NAME/$ROLE_NAME/g" "$SCRIPT_DIR/$filepath"
     done
+    msg "Replacing title in README.md"
+    sed -i "s/$TEMPLATE_ROLE_NAME/$ROLE_NAME/ig" "$SCRIPT_DIR/README.md"
 }
 
 main() {
