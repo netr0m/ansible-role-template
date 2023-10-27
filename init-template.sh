@@ -18,6 +18,7 @@ TEMPLATE_FILES_WITH_REFS=(
 ROLE_AUTHOR=""
 REPO_NAME=""
 ROLE_NAME=""
+__TEMPLATE_ORIGIN="git@github.com:$TEMPLATE_AUTHOR_NAME/$TEMPLATE_REPO_NAME.git"
 
 usage() {
     cat <<EOF
@@ -85,7 +86,8 @@ parse_params() {
 parse_params "$@"
 
 set_upstream() {
-    git remote rename origin upstream
+    msg "Adding '$__TEMPLATE_ORIGIN' as upstream remote"
+    git remote add upstream "$__TEMPLATE_ORIGIN"
 }
 
 replace_refs() {
@@ -102,7 +104,6 @@ replace_refs() {
 main() {
     set_upstream
     replace_refs
-    msg "Make sure to add the git remote, e.g.:\n\tgit remote add origin git@github.com:$ROLE_AUTHOR/$REPO_NAME.git"
 }
 
 main
