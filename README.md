@@ -1,8 +1,14 @@
 # Ansible Role: Template
 
-[![CI](https://github.com/netr0m/ansible-role-template/workflows/CI/badge.svg?event=push)](https://github.com/netr0m/ansible-role-template/actions?query=workflow%3ACI)
+[![CI](https://github.com/netr0m/ansible-role-template/actions/workflows/ci.yml/badge.svg)](https://github.com/netr0m/ansible-role-template/actions/workflows/ci.yml)
 
 Ansible role template
+
+## Installation
+
+```sh
+$ ansible-galaxy install git+https://github.com/netr0m/ansible-role-template.git
+```
 
 ## Requirements
 
@@ -14,7 +20,13 @@ Available variables are listed in [`docs/default-variables.md`](./docs/default-v
 
 ## Dependencies
 
-None
+See [ansible-requirements.yml](./ansible-requirements.yml) for a list
+
+### Installation
+```sh
+ansible-galaxy collection install -r ansible-requirements.yml
+ansible-galaxy role install -r ansible-requirements.yml
+```
 
 ## Example Playbook
 
